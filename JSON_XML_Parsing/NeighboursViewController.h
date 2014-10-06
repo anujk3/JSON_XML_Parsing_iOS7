@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NeighboursViewController : UIViewController
+@interface NeighboursViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NSXMLParserDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tblNeighbours;
+@property (nonatomic, strong) NSString *geonameID;
 
 @end

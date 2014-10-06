@@ -58,7 +58,10 @@
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    
+    if ([segue.identifier isEqualToString:@"idSegueNeighbours"]) {
+        NeighboursViewController *neighboursViewController = [segue destinationViewController];
+        neighboursViewController.geonameID = [self.countryDetailsDictionary objectForKey:@"geonameId"];
+    }
 }
 
 
@@ -79,7 +82,7 @@
     if (index != -1) {
         // Get the two-letter country code from the arrCountryCodes array.
         self.countryCode = [self.arrCountryCodes objectAtIndex:index];
-        NSLog(@"Country Code is %ld", (long)index);
+        //NSLog(@"Country Code is %ld", (long)index);
         // Download the country info.
         [self getCountryInfo];
     }
@@ -109,7 +112,7 @@
                 NSLog(@"%@", [error localizedDescription]);
             } else{
                 self.countryDetailsDictionary = [[returnedDict objectForKey:@"geonames"] objectAtIndex:0];
-                NSLog(@"%@", self.countryDetailsDictionary);
+                //NSLog(@"%@", self.countryDetailsDictionary);
 
                 // Set the country name to the respective label.
                 self.lblCountry.text = [NSString stringWithFormat:@"%@ (%@)", [self.countryDetailsDictionary objectForKey:@"countryName"], [self.countryDetailsDictionary objectForKey:@"countryCode"]];
@@ -211,10 +214,10 @@
                                  };
 
     NSData *JSONData = [NSJSONSerialization dataWithJSONObject:dictionary options:NSJSONWritingPrettyPrinted error:nil];
-    NSLog(@"%@", JSONData);
+    //NSLog(@"%@", JSONData);
     
     NSString *JSONString = [[NSString alloc]initWithData:JSONData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@", JSONString);
+    //NSLog(@"%@", JSONString);
     
     if ([MFMailComposeViewController canSendMail]) {
         MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
