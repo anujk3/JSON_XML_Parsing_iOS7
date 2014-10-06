@@ -111,6 +111,14 @@
                 self.countryDetailsDictionary = [[returnedDict objectForKey:@"geonames"] objectAtIndex:0];
                 NSLog(@"%@", self.countryDetailsDictionary);
 
+                // Set the country name to the respective label.
+                self.lblCountry.text = [NSString stringWithFormat:@"%@ (%@)", [self.countryDetailsDictionary objectForKey:@"countryName"], [self.countryDetailsDictionary objectForKey:@"countryCode"]];
+                
+                // Reload the table view.
+                [self.tblCountryDetails reloadData];
+                
+                // Show the table view.
+                self.tblCountryDetails.hidden = NO;
             }
 
         }
@@ -125,7 +133,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 0;
+    return 7;
 }
 
 
@@ -137,7 +145,41 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-    
+    switch (indexPath.row) {
+        case 0:
+            cell.detailTextLabel.text = @"Capital";
+            cell.textLabel.text = [self.countryDetailsDictionary objectForKey:@"capital"];
+            break;
+        case 1:
+            cell.detailTextLabel.text = @"Continent";
+            cell.textLabel.text = [self.countryDetailsDictionary objectForKey:@"continentName"];
+            break;
+        case 2:
+            cell.detailTextLabel.text = @"Population";
+            cell.textLabel.text = [self.countryDetailsDictionary objectForKey:@"population"];
+            break;
+        case 3:
+            cell.detailTextLabel.text = @"Area in Square Km";
+            cell.textLabel.text = [self.countryDetailsDictionary objectForKey:@"areaInSqKm"];
+            break;
+        case 4:
+            cell.detailTextLabel.text = @"Currency";
+            cell.textLabel.text = [self.countryDetailsDictionary objectForKey:@"currencyCode"];
+            break;
+        case 5:
+            cell.detailTextLabel.text = @"Languages";
+            cell.textLabel.text = [self.countryDetailsDictionary objectForKey:@"languages"];
+            break;
+        case 6:
+            cell.textLabel.text = @"Neighbour Countries";
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+            break;
+            
+        default:
+            break;
+    }
+	
     return cell;
 }
 
@@ -157,6 +199,34 @@
 #pragma mark - IBAction method implementation
 
 - (IBAction)sendJSON:(id)sender {
+    // Create a dictionary containing only the values we care about.
+    NSDictionary *dictionary = @{@"countryName": [self.countryDetailsDictionary objectForKey:@"countryName"],
+                                 @"countryCode": [self.countryDetailsDictionary objectForKey:@"countryCode"],
+                                 @"capital": [self.countryDetailsDictionary objectForKey:@"capital"],
+                                 @"continent": [self.countryDetailsDictionary objectForKey:@"continentName"],
+                                 @"population": [self.countryDetailsDictionary objectForKey:@"population"],
+                                 @"areaInSqKm": [self.countryDetailsDictionary objectForKey:@"areaInSqKm"],
+                                 @"currency": [self.countryDetailsDictionary objectForKey:@"currencyCode"],
+                                 @"languages": [self.countryDetailsDictionary objectForKey:@"languages"]
+                                 };
+
+    NSData *JSONData = [NSJSONSerialization dataWithJSONObject:dictionary options:NSJSONWritingPrettyPrinted error:nil];
+    NSLog(@"%@", JSONData);
+    
+    NSString *JSONString = [[NSString alloc]initWithData:JSONData encoding:NSUTF8StringEncoding];
+    NSLog(@"%@", JSONString);
+    
+    if ([MFMailComposeViewController canSendMail]) {
+        MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
+        mailViewController.mailComposeDelegate = self;
+        
+        [mailViewController setSubject:@"Country JSON"];
+        
+        [mailViewController setMessageBody:JSONString isHTML:NO];
+        
+        [self presentViewController:mailViewController animated:YES completion:nil];
+    }
+    
 }
 
 
