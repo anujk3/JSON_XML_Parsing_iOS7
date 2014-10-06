@@ -14,6 +14,9 @@
 		65494D6819E137410048F602 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65494D6719E137410048F602 /* Images.xcassets */; };
 		65494D6B19E137410048F602 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65494D6919E137410048F602 /* LaunchScreen.xib */; };
 		65494D7719E137410048F602 /* JSON_XML_ParsingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 65494D7619E137410048F602 /* JSON_XML_ParsingTests.m */; };
+		65494D8219E137410048F602 /* NeighboursViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65494D8119E137410048F602 /* NeighboursViewController.m */; };
+		65494D8519E196740048F602 /* countries_short.txt in Resources */ = {isa = PBXBuildFile; fileRef = 65494D8319E196740048F602 /* countries_short.txt */; };
+		65494D8619E196740048F602 /* countries.txt in Resources */ = {isa = PBXBuildFile; fileRef = 65494D8419E196740048F602 /* countries.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,10 @@
 		65494D7019E137410048F602 /* JSON_XML_ParsingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSON_XML_ParsingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		65494D7519E137410048F602 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65494D7619E137410048F602 /* JSON_XML_ParsingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSON_XML_ParsingTests.m; sourceTree = "<group>"; };
+		65494D8019E137410048F602 /* NeighboursViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeighboursViewController.h; sourceTree = "<group>"; };
+		65494D8119E137410048F602 /* NeighboursViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeighboursViewController.m; sourceTree = "<group>"; };
+		65494D8319E196740048F602 /* countries_short.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = countries_short.txt; sourceTree = "<group>"; };
+		65494D8419E196740048F602 /* countries.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = countries.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +88,8 @@
 		65494D5919E137410048F602 /* JSON_XML_Parsing */ = {
 			isa = PBXGroup;
 			children = (
+				65494D8319E196740048F602 /* countries_short.txt */,
+				65494D8419E196740048F602 /* countries.txt */,
 				65494D5E19E137410048F602 /* AppDelegate.h */,
 				65494D5F19E137410048F602 /* AppDelegate.m */,
 				65494D6119E137410048F602 /* ViewController.h */,
@@ -89,6 +98,8 @@
 				65494D6719E137410048F602 /* Images.xcassets */,
 				65494D6919E137410048F602 /* LaunchScreen.xib */,
 				65494D5A19E137410048F602 /* Supporting Files */,
+				65494D8019E137410048F602 /* NeighboursViewController.h */,
+				65494D8119E137410048F602 /* NeighboursViewController.m */,
 			);
 			path = JSON_XML_Parsing;
 			sourceTree = "<group>";
@@ -199,8 +210,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65494D8519E196740048F602 /* countries_short.txt in Resources */,
 				65494D6619E137410048F602 /* Main.storyboard in Resources */,
 				65494D6B19E137410048F602 /* LaunchScreen.xib in Resources */,
+				65494D8619E196740048F602 /* countries.txt in Resources */,
 				65494D6819E137410048F602 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,6 +234,7 @@
 			files = (
 				65494D6319E137410048F602 /* ViewController.m in Sources */,
 				65494D6019E137410048F602 /* AppDelegate.m in Sources */,
+				65494D8219E137410048F602 /* NeighboursViewController.m in Sources */,
 				65494D5D19E137410048F602 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,6 +426,7 @@
 				65494D7C19E137410048F602 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		65494D7D19E137410048F602 /* Build configuration list for PBXNativeTarget "JSON_XML_ParsingTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +435,7 @@
 				65494D7F19E137410048F602 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

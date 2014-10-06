@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate>
 
+@property (weak, nonatomic) IBOutlet UITextField *txtCountry;
+@property (weak, nonatomic) IBOutlet UILabel *lblCountry;
+@property (weak, nonatomic) IBOutlet UITableView *tblCountryDetails;
+- (IBAction)sendJSON:(id)sender;
 
 @end
 
